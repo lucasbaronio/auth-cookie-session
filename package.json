@@ -1,0 +1,28 @@
+{
+  "name": "auth-cookie-session",
+  "version": "1.0.0",
+  "description": "NodeJs athentication app with cookie-session",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "start:dev": "NODE_ENV=development node --watch --env-file=.development.env index.js",
+    "start:prod": "NODE_ENV=production node --watch --env-file=.production.env index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "cookie-session": "^2.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "util": "^0.12.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.1.1",
+    "eslint": "^9.1.0",
+    "globals": "^15.0.0",
+    "prettier": "3.2.5"
+  }
+}
