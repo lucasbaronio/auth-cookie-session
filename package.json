@@ -1,11 +1,11 @@
 {
   "name": "auth-cookie-session",
   "version": "1.0.0",
-  "description": "NodeJs athentication app with cookie-session",
+  "description": "NodeJs authentication app with cookie-session",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "node --test",
+    "test": "NODE_ENV=test node --test",
     "start:dev": "NODE_ENV=development node --watch --env-file=.development.env index.js",
     "start:prod": "NODE_ENV=production node --watch --env-file=.production.env index.js"
   },

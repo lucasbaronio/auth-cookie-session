@@ -1,8 +1,9 @@
 import { generateJwtToken } from "../middlewares/tokenMiddleware.js";
+import catchAsyncError from "../utils/catchAsyncError.js";
 import SessionManager from "../utils/sessionManager.js";
 import { createUser, getUser } from "./userController.js";
 
-export const signIn = (req, res) => {
+export const signIn = catchAsyncError((req, res) => {
     const { username, password } = req.body;
     console.log(password);
   
@@ -14,14 +15,14 @@ export const signIn = (req, res) => {
     SessionManager.setUser(req, user);
   
     return res.status(200).json({ ...user });
-};
+});
   
-export const signOut = (req, res) => {
+export const signOut = catchAsyncError((req, res) => {
     req.session = null;
     return res.status(200).json({ message: 'Logged out!' });
-};
+});
 
-export const signUp = (req, res) => {
+export const signUp = catchAsyncError((req, res) => {
     const { username, email, password, confirmPassword } = req.body;
     if (password !== confirmPassword) return res.status(400).json({ message: 'Passwords are not equals' });
     
@@ -32,4 +33,4 @@ export const signUp = (req, res) => {
     SessionManager.setUser(req, newUser);
 
     return res.status(200).json({ ...newUser });
-};
+});

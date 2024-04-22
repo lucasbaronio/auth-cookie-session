@@ -1,3 +1,4 @@
+import catchAsyncError from "../utils/catchAsyncError.js";
 import SessionManager from "../utils/sessionManager.js";
 
 let ID = 2;
@@ -15,14 +16,14 @@ let users = [
       },
 ];
 
-export const getUsers = (req, res) => {
+export const getUsers = catchAsyncError((req, res) => {
     return res.status(200).json(users);
-}
+});
 
-export const getCurrentUser = (req, res) => {
+export const getCurrentUser = catchAsyncError((req, res) => {
     const currentUser = SessionManager.getUser(req);
     return res.status(200).json(currentUser);
-}
+});
 
 export const createUser = (newUser) => {
     ID = ID + 1;
