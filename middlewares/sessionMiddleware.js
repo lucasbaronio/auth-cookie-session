@@ -4,7 +4,7 @@ import { isProduction } from '../utils/environment.js';
 
 const devCookieConfig = {
   httpOnly: false,
-  maxAge: process.env.COOKIE_SESSION_EXPIRES_IN,
+  maxAge: parseInt(process.env.COOKIE_SESSION_EXPIRES_IN),
 };
 
 const prodCookieConfig = {
@@ -12,7 +12,7 @@ const prodCookieConfig = {
   httpOnly: true,
   secure: true,
   sameSite: 'lax',
-  maxAge: process.env.COOKIE_SESSION_EXPIRES_IN,
+  maxAge: parseInt(process.env.COOKIE_SESSION_EXPIRES_IN),
 };
 
 export const extendSessionExpiration = (req, res, next) => {

@@ -1,37 +1,31 @@
+import User from "../models/userModel.js";
 import catchAsyncError from "../utils/catchAsyncError.js";
 import SessionManager from "../utils/sessionManager.js";
 
-let ID = 2;
+export const getUsers = catchAsyncError(async (req, res) => {
+    const users = await User.find();
+  
+    res.status(200).json(users);
+});
 
-let users = [
-    {
-        id: 1,
-        username: 'lbaronio',
-        password: 'pepepepe',
-    },
-    {
-        id: 2,
-        username: 'ppequez',
-        password: 'pepepepe',
-      },
-];
+export const getUserById = catchAsyncError(async (req, res) => {
+    const user = await User.findById(req.params.id);
 
-export const getUsers = catchAsyncError((req, res) => {
-    return res.status(200).json(users);
+    const UserFilter = {
+      name: user.name,
+      email: user.email,
+      id: user._id,
+    };
+  
+    res.status(200).json(UserFilter);
 });
 
 export const getCurrentUser = catchAsyncError((req, res) => {
     const currentUser = SessionManager.getUser(req);
-    return res.status(200).json(currentUser);
+    const currentUserFilter = {
+        id: currentUser._id,
+        name: currentUser.name,
+        email: currentUser.email,
+    };
+    return res.status(200).json(currentUserFilter);
 });
-
-export const createUser = (newUser) => {
-    ID = ID + 1;
-    const user = { ...newUser, id: ID }
-    users.push(user);
-    return user;
-}
-
-export const getUser = (userName) => {
-    return users.find((user) => user.username === userName);
-}

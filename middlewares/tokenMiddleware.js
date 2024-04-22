@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import util from 'util';
 import jwt from 'jsonwebtoken';
+import SessionManager from '../utils/sessionManager.js';
 
 export const generateJwtToken = (id, data) =>
   jwt.sign({ id, data }, process.env.JWT_SECRET, {
@@ -8,7 +9,7 @@ export const generateJwtToken = (id, data) =>
   });
 
 const tokenMiddleware = async (req, res, next) => {
-  const jwtToken = req.session.token;
+  const jwtToken = SessionManager.getToken(req);
   if (!jwtToken) return res.status(400).json({ message: 'You are not logged' });
 
   let decodedToken;
