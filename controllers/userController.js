@@ -1,6 +1,6 @@
 import User from "../models/userModel.js";
 import catchAsyncError from "../utils/catchAsyncError.js";
-import SessionManager from "../utils/sessionManager.js";
+import SessionManager from "../utils/SessionManager.js";
 
 export const getUsers = catchAsyncError(async (req, res) => {
     const users = await User.find();

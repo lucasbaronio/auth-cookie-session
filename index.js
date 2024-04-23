@@ -7,7 +7,8 @@ import { exit } from 'node:process';
 import compression from 'compression';
 import cors from 'cors';
 import sessionMiddleware, { extendSessionExpiration } from './middlewares/sessionMiddleware.js';
-import userRouter from './routes/userRoutes.js';
+import userRoutes from './routes/userRoutes.js';
+import adminRoutes from './routes/adminRoutes.js';
 import GlobalError from './utils/globalError.js';
 import errorController from './controllers/errorController.js';
 import { isDevelopment } from './utils/environment.js';
@@ -30,7 +31,11 @@ app.use(express.json({ limit: '10mb' }));
 app.use(sessionMiddleware());
 app.use(extendSessionExpiration);
 
-app.use('/api/v1/users', userRouter);
+// User Router
+app.use('/api/v1/users', userRoutes);
+
+// Admin Router
+app.use('/api/v1/admin', adminRoutes);
 
 app.get('/', (req, res) => res.send('<h1>Bienvenido a Auth API!!!</h1>'));
 

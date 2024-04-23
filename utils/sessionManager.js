@@ -17,6 +17,10 @@ class SessionManager {
   setToken(req, token) {
     req.session[TOKEN] = token;
   }
+
+  clearSession(req) {
+    req.session = null;
+  }
 }
 
 export default new SessionManager();

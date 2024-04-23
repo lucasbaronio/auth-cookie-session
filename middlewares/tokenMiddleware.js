@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import util from 'util';
 import jwt from 'jsonwebtoken';
-import SessionManager from '../utils/sessionManager.js';
+import SessionManager from '../utils/SessionManager.js';
 
 export const generateJwtToken = (id, data) =>
   jwt.sign({ id, data }, process.env.JWT_SECRET, {
