@@ -66,7 +66,12 @@ El servidor se ejecutará en el puerto especificado y estará listo para recibir
 
 El servidor proporciona los siguientes endpoints para la autenticación de usuarios:
 
-// TODO
+- POST /api/v1/admin/signup: Registra un nuevo usuario administrador (La primera vez deberiamos sacar las validaciones para poder crearlo).
+- POST /api/v1/users/signup: Registra un nuevo usuario.
+- POST /api/v1/users/signin: Inicia sesión de un usuario existente.
+- DELETE /api/v1/users/signout: Cierra la sesión del usuario autenticado.
+- GET /api/v1/users/: Obtiene todos los usuarios (requiere ser administrador).
+- GET /api/v1/users/me: Obtiene los datos del perfil del usuario autenticado.
 
 ## Contribución
 
