@@ -67,9 +67,6 @@ El servidor se ejecutará en el puerto especificado y estará listo para recibir
 El servidor proporciona los siguientes endpoints para la autenticación de usuarios:
 
 // TODO
-- POST /registro: Registro de un nuevo usuario.
-- POST /login: Inicio de sesión de un usuario existente.
-- GET /perfil: Obtiene los datos del perfil del usuario autenticado.
 
 ## Contribución
 
